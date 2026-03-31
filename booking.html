@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Booking</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="container">
+        <section class="card-section">
+            <h1>Ticket Booking</h1>
+
+            <form id="bookingForm">
+                <input type="text" id="userName" placeholder="Name" required>
+                <input type="date" id="travelDate" required>
+                <input type="number" id="tickets" placeholder="Number of Tickets" min="1" required>
+
+                <div class="form-buttons">
+                    <button type="submit">Confirm Booking</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <script src="booking.js"></script>
+</body>
+</html>

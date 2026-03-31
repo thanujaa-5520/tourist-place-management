@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Place Details</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="container">
+        <section class="card-section" id="placeDetails"></section>
+    </main>
+
+    <script>
+        function getPlaces() {
+            return JSON.parse(localStorage.getItem("places")) || [];
+        }
+
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get("id");
+
+        const places = getPlaces();
+        const place = places.find(p => p.id === id);
+
+        const container = document.getElementById("placeDetails");
+
+        if (!place) {
+            container.innerHTML = "<h2>Place not found</h2>";
+        } else {
+            container.innerHTML = `
+                <h1>${place.name}</h1>
+                <img src="${place.image}" alt="${place.name}" style="width:100%; max-width:500px; border-radius:12px;">
+                <p><strong>City:</strong> ${place.city}</p>
+                <p><strong>Description:</strong> ${place.description}</p>
+                <p><strong>Best Time:</strong> ${place.bestTime}</p>
+                <p><strong>Entry Fee:</strong> ${place.fee}</p>
+                <p><strong>Rating:</strong> ${"⭐".repeat(place.rating)}</p>
+                <button onclick="window.location.href='booking.html?id=${place.id}'">Book Tickets</button>
+            `;
+        }
+    </script>
+</body>
+</html>

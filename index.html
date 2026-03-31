@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tourist Place Management Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <h1>Tourist Place Management Website</h1>
+        <h4>Thanujaa 24BCE5520 </h4>
+        <p class="tagline">Explore, manage and book tourist destinations</p>
+    </header>
+
+    <main class="container">
+
+        <!-- Manage Tourist Places -->
+        <section class="card-section">
+            <h2>Manage Tourist Places</h2>
+
+            <div class="toolbar">
+                <input type="text" id="searchInput" placeholder="Search by name or city">
+                
+                <select id="filterSelect">
+                    <option value="ALL">ALL</option>
+                    <option value="FREE">FREE</option>
+                    <option value="PAID">PAID</option>
+                </select>
+
+                <button onclick="resetFilters()">Reset</button>
+            </div>
+
+            <p id="placeCount"></p>
+
+            <div id="placesContainer" class="places-grid"></div>
+        </section>
+
+        <!-- Add / Edit Place -->
+        <section class="card-section">
+            <h2>Add / Edit Place</h2>
+
+            <form id="placeForm">
+                <input type="hidden" id="placeId">
+
+                <input type="text" id="name" placeholder="Place Name" required>
+                <input type="text" id="city" placeholder="City / State" required>
+                
+                <select id="category" required>
+                    <option value="">-- Select --</option>
+                    <option value="FREE">FREE</option>
+                    <option value="PAID">PAID</option>
+                </select>
+
+                <input type="text" id="bestTime" placeholder="Best Time" required>
+                <input type="text" id="fee" placeholder="Entry Fee" required>
+                <input type="number" id="rating" placeholder="Rating (1-5)" min="1" max="5" required>
+                <input type="text" id="image" placeholder="Image Path (e.g. images/ooty.jpg)" required>
+                <textarea id="description" placeholder="Description" required></textarea>
+
+                <div class="form-buttons">
+                    <button type="submit">Save Place</button>
+                    <button type="button" onclick="clearForm()">Clear</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Canvas Statistics -->
+        <section class="card-section">
+            <h2>Tourist Place Statistics</h2>
+            <p>Canvas-based visualization of free and paid destinations</p>
+            <canvas id="statsCanvas" width="600" height="320"></canvas>
+        </section>
+
+    </main>
+
+    <script src="data.js"></script>
+</body>
+</html>

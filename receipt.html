@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Receipt</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="container">
+        <section class="card-section" id="receiptBox"></section>
+    </main>
+
+    <script>
+        const booking = JSON.parse(localStorage.getItem("currentBooking"));
+        const receiptBox = document.getElementById("receiptBox");
+
+        if (!booking) {
+            receiptBox.innerHTML = "<h2>No booking found.</h2>";
+        } else {
+            receiptBox.innerHTML = `
+                <h1>Booking Receipt</h1>
+                <p><strong>Booking ID:</strong> ${booking.bookingId}</p>
+                <p><strong>Name:</strong> ${booking.userName}</p>
+                <p><strong>Travel Date:</strong> ${booking.travelDate}</p>
+                <p><strong>Tickets:</strong> ${booking.tickets}</p>
+                <p><strong>Status:</strong> ${booking.status} ✅</p>
+            `;
+        }
+    </script>
+</body>
+</html>
